@@ -32,6 +32,8 @@ valuesToPoints(List values, int sensor) {
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     int dataPack = 0;
     return TimerBuilder.periodic(Duration(seconds: 1), //updates every second
         builder: (context) {
@@ -67,8 +69,10 @@ class HomePage extends StatelessWidget {
         return series;
       }
 
-      return Expanded(
-        child: new charts.LineChart(
+      return Container(
+        height: height,
+        width: width,
+        child: charts.LineChart(
           getSeriesData(),
           animate: false,
         ),
